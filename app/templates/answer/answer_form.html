@@ -1,0 +1,17 @@
+<!-- answer edit -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">answer edit</h5>
+    <form method="post">
+        {{ form.csrf_token }}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="content">answer</label>
+            <textarea class="form-control" name="content" id="content"
+                      rows="10">{{ form.content.data or '' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">save</button>
+    </form>
+</div>
+{% endblock %}
