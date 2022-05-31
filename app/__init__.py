@@ -30,11 +30,12 @@ def create_app():
 	from . import models
 
 	# blueprint
-	from .views import main_views, question_views, answer_views, auth_views
+	from .views import main_views, question_views, answer_views, auth_views, data_views
 	app.register_blueprint(main_views.bp)
 	app.register_blueprint(question_views.bp)
 	app.register_blueprint(answer_views.bp)
 	app.register_blueprint(auth_views.bp)
+	app.register_blueprint(data_views.bp)
 	
 	# filter
 	from .filter import format_datetime

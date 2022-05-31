@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- 404 Error-->
+<div class="container">
+    <center>
+    <h3><img src="{{ url_for('data.video_feed') }}" width="70%"></h3>
+    </center>
+    <hr>
+    <p>
+    <center> Time : {{ cur_time }} </center>
+    </p>
+    <center>
+    <button onclick="location.href='/'">Go to home</button>
+    </center>
+</div>
+{% endblock %}
+
+<!--meta http-equiv="refresh" content="5"-->
+
+

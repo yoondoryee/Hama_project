@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<!--link rel = "stylesheet" href="{{url_for('ststic', filename='style.css')}}"-->
+{% block content %}
+<!-- 404 Error-->
+<div class="container">
+    <center>
+	<h5>Motor control</h5>
+	<form action = "/data/motor" method="post">
+	    <input type="submit" name="motor" value="motor_on">
+	    <input type="submit" name="motor" value="motor_off">
+	    <input type="submit" name="motor" value="fan_on">
+	    <input type="submit" name="motor" value="fan_off">
+	</form>
+	<br>
+    <button onclick="location.href='/'">Go to home</button>
+    </center>
+</div>
+{% endblock %}
+{% block script %}
+{% endblock %}
+<!--meta http-equiv="refresh" content="5"-->

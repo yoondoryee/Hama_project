@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+<link rel = "stylesheet" href="{{url_for('ststic', filename='style.css')}}">
+{% block content %}
+<!-- 404 Error-->
+<div class="container">
+    <center>
+	<h5>Current Humidity</h5>
+	    {{ hum }}
+	<br>
+    <button onclick="location.href='/'">Go to home</button>
+    </center>
+</div>
+{% endblock %}
+{% block script %}
+{% endblock %}
+<!--meta http-equiv="refresh" content="5"-->
+
+
+
