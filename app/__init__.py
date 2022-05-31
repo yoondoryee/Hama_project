@@ -15,8 +15,8 @@ db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
 migrate = Migrate()
 
 def page_not_found(e):
-    return render_template('404.html'), 404
-
+	return render_template('404.html'), 404
+	
 def create_app():
 	app = Flask(__name__)
 	app.config.from_envvar('APP_CONFIG_FILE')
@@ -47,5 +47,4 @@ def create_app():
 	 # Error page
 	app.register_error_handler(404, page_not_found)
 
-    
 	return app
