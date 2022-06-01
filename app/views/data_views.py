@@ -1,6 +1,5 @@
 from flask import Blueprint, Flask, jsonify, request,render_template,make_response, redirect,url_for, Response
-import board
-import adafruit_dht
+import Adafruit_DHT
 import time
 from app.camera import Camera
 from app.views.auth_views import login_required
@@ -8,7 +7,8 @@ import RPi.GPIO as GPIO
 
 
 GPIO.setmode(GPIO.BCM)
-	
+
+pin = 18	
 pin1 = 20
 pin2 = 21
 EN1 = 16
@@ -23,7 +23,8 @@ GPIO.setup(pin3, GPIO.OUT)
 GPIO.setup(pin4, GPIO.OUT)
 GPIO.setup(EN2, GPIO.OUT)
 
-sensor = adafruit_dht.DHT11(board.D18)
+sensor = Adafruit_DHT.DHT11
+#sensor = adafruit_dht.DHT11(board.D18)
 bp = Blueprint('data', __name__, url_prefix='/data')
 
 @bp.route('/camera/')
@@ -41,7 +42,10 @@ def gen(camera):
 @bp.route('/humid/')
 @login_required
 def get_data():
-	humidity = sensor.humidity
+	humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+	if humidity is not None and temperature is not None :
+	    print('Temp = %0.1f*C Humid = %0.1f%' % (temperature, humidity))
+	#humidity = sensor.humidity
 	return render_template("data/get_data.html", hum=humidity)
     
 @bp.route('/video_feed')
